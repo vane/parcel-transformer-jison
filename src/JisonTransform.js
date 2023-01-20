@@ -1,10 +1,10 @@
 import {Transformer} from '@parcel/plugin';
-import Parser from 'jison';
+import jison from 'jison';
 
 export default new Transformer({
   async transform({asset}) {
     const source = await asset.getCode();
-    const parser = new Parser(source);
+    const parser = new jison.Jison.Parser(source);
     asset.type = 'js';
     asset.setCode(parser.generate());
 
